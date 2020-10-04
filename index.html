@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Betty's Art Store | Windsor, Ontario</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="main.css" />
+
+        <!-- Vue -->
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+    <body id="betty-art-store">
+        <header>
+            <h1 class="logo--heading">Betty's Art Store</h1>
+            <nav class="menu">
+                <ul class="menu--list">
+                    <li class="menu--item">Store</li>
+                    <li class="menu--item">About Us</li>
+                    <li class="menu--item">FAQ's</li>
+                </ul>
+            </nav>
+            <div class="user">
+                <svg
+                    class="cart"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="512"
+                    height="512"
+                    viewBox="0 0 512 512"
+                >
+                    <title>Cart</title>
+                    <circle
+                        cx="176"
+                        cy="416"
+                        r="16"
+                        style="
+                            fill: none;
+                            stroke: #000;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-width: 32px;
+                        "
+                    />
+                    <circle
+                        cx="400"
+                        cy="416"
+                        r="16"
+                        style="
+                            fill: none;
+                            stroke: #000;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-width: 32px;
+                        "
+                    />
+                    <polyline
+                        points="48 80 112 80 160 352 416 352"
+                        style="
+                            fill: none;
+                            stroke: #000;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-width: 32px;
+                        "
+                    />
+                    <path
+                        d="M160,288H409.44a8,8,0,0,0,7.85-6.43l28.8-144a8,8,0,0,0-7.85-9.57H128"
+                        style="
+                            fill: none;
+                            stroke: #000;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-width: 32px;
+                        "
+                    />
+                </svg>
+                <h3 class="user--name">John Doe</h3>
+            </div>
+        </header>
+        <section>
+            <h2 class="product--heading">Products</h2>
+            <ul class="product--list">
+                <li v-for="product in products" class="product--card">
+                    <img
+                        class="product--image"
+                        class="product--image"
+                        :src="product.image"
+                        :alt="product.altText"
+                    />
+                    <h3 class="product--name">{{product.name}}</h3>
+                    <p class="product--description">{{product.description}}</p>
+                    <div class="product--buy">
+                        <h3 class="product--cost">{{product.cost}}$</h3>
+                        <button class="product--buy--btn">Add to cart</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <footer>
+            <h1 class="logo--heading logo--heading--footer">
+                Betty's Art Store
+            </h1>
+            <address class="footer--address">
+                Downtown, Windsor, Ontario
+            </address>
+        </footer>
+    </body>
+    <script src="main.js"></script>
+</html>

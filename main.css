@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(270deg, #000046, #318cfc, #dfe6ee);
+    background-size: 600% 600%;
+    -webkit-animation: background 18s ease infinite;
+    -moz-animation: background 18s ease infinite;
+    animation: background 18s ease infinite;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "product"
+        "footer";
+}
+
+header {
+    background-color: #edf2f7;
+    padding: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
+    column-gap: 40px;
+    grid-template-areas: "logo menu user";
+    border: 5px solid black;
+    border-top: none;
+    grid-area: header;
+}
+
+.logo--heading {
+    font-family: "Abril Fatface", cursive;
+    font-size: 3em;
+    grid-area: logo;
+}
+
+.menu {
+    justify-self: end;
+    align-self: center;
+    grid-area: menu;
+}
+
+.menu--list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    font-family: "Bebas Neue", cursive;
+}
+
+.menu--item {
+    font-size: 2em;
+    margin-left: 20px;
+}
+
+.user {
+    grid-area: user;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.user--name {
+    font-size: 2em;
+    font-weight: 400;
+    font-family: "Bebas Neue", cursive;
+}
+
+section {
+    background-color: #edf2f7;
+    padding: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "product-heading"
+        "products";
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    grid-area: product;
+}
+
+.product--heading {
+    font-family: "Bebas Neue", cursive;
+    font-size: 2.5em;
+    letter-spacing: 3px;
+    border-bottom: 5px solid black;
+    margin-bottom: 30px;
+}
+
+.product--list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    column-gap: 20px;
+    row-gap: 20px;
+    list-style-type: none;
+    font-family: "Bebas Neue", cursive;
+}
+
+.product--card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 10px;
+    height: max-content;
+    max-width: 400px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.05), 0 100px 80px rgba(0, 0, 0, 0.07);
+    transition: 0.3s transform;
+    cursor: pointer;
+}
+
+.product--card:hover {
+    transform: scale(1.05);
+}
+
+.product--image {
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+}
+
+.product--name {
+    font-size: 2.5em;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.product--description {
+    font-family: sans-serif;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.product--buy {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.product--cost {
+    font-size: 2em;
+    margin-right: auto;
+    letter-spacing: 2px;
+}
+
+.product--buy--btn {
+    background-color: #318cfc;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #edf2f7;
+    padding: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "logo address";
+    border: 5px solid black;
+    border-bottom: none;
+    grid-area: footer;
+}
+
+.logo--heading--footer {
+    font-size: 2em;
+}
+
+.footer--address {
+    font-size: 1.1em;
+    justify-self: end;
+    align-self: center;
+}
+
+@keyframes background {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
