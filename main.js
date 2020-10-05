@@ -29,7 +29,37 @@ const BettysArtStore = {
                         "https://via.placeholder.com/400?text=Betty's+Art+Blog+Product",
                 },
             ],
+            cart: [],
+            showCart: false,
+            itemInCart: false,
         };
+    },
+    computed: {
+        total: function () {
+            let total = 0;
+            this.cart.map((item) => {
+                total += item.cost * item.quantity;
+            });
+            return total;
+        },
+    },
+    methods: {
+        addToCart: function (index) {
+            this.itemInCart = false;
+            let product = this.products[index];
+            this.cart.map((item) => {
+                if (item.name === product.name) {
+                    console.log("here");
+                    item.quantity += 1;
+                    this.itemInCart = true;
+                }
+            });
+            if (!this.itemInCart) {
+                this.cart = [...this.cart, {...product, quantity: 1}];
+                this.itemInCart = false;
+            }
+            console.log(this.cart);
+        },
     },
 };
 

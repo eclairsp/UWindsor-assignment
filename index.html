@@ -17,71 +17,89 @@
             <nav class="menu">
                 <ul class="menu--list">
                     <li class="menu--item">Store</li>
+                    <li class="menu--item">Book An Appointment</li>
                     <li class="menu--item">About Us</li>
                     <li class="menu--item">FAQ's</li>
                 </ul>
             </nav>
             <div class="user">
-                <svg
-                    class="cart"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="512"
-                    height="512"
-                    viewBox="0 0 512 512"
-                >
-                    <title>Cart</title>
-                    <circle
-                        cx="176"
-                        cy="416"
-                        r="16"
-                        style="
-                            fill: none;
-                            stroke: #000;
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke-width: 32px;
-                        "
-                    />
-                    <circle
-                        cx="400"
-                        cy="416"
-                        r="16"
-                        style="
-                            fill: none;
-                            stroke: #000;
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke-width: 32px;
-                        "
-                    />
-                    <polyline
-                        points="48 80 112 80 160 352 416 352"
-                        style="
-                            fill: none;
-                            stroke: #000;
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke-width: 32px;
-                        "
-                    />
-                    <path
-                        d="M160,288H409.44a8,8,0,0,0,7.85-6.43l28.8-144a8,8,0,0,0-7.85-9.57H128"
-                        style="
-                            fill: none;
-                            stroke: #000;
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke-width: 32px;
-                        "
-                    />
-                </svg>
+                <div class="cart--handler">
+                    <svg
+                        @click="showCart = !showCart"
+                        class="cart"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="512"
+                        height="512"
+                        viewBox="0 0 512 512"
+                    >
+                        <title>Cart</title>
+                        <circle
+                            cx="176"
+                            cy="416"
+                            r="16"
+                            style="
+                                fill: none;
+                                stroke: #000;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-width: 32px;
+                            "
+                        />
+                        <circle
+                            cx="400"
+                            cy="416"
+                            r="16"
+                            style="
+                                fill: none;
+                                stroke: #000;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-width: 32px;
+                            "
+                        />
+                        <polyline
+                            points="48 80 112 80 160 352 416 352"
+                            style="
+                                fill: none;
+                                stroke: #000;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-width: 32px;
+                            "
+                        />
+                        <path
+                            d="M160,288H409.44a8,8,0,0,0,7.85-6.43l28.8-144a8,8,0,0,0-7.85-9.57H128"
+                            style="
+                                fill: none;
+                                stroke: #000;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-width: 32px;
+                            "
+                        />
+                    </svg>
+                    <transition name="slide-fade">
+                        <ol class="cart--list" v-if="showCart">
+                            <li v-if="cart.length === 0">
+                                Nothing in cart yet.
+                            </li>
+
+                            <li v-else v-for="item in cart">
+                                {{item.name}} - {{item.quantity}} =
+                                {{item.quantity*item.cost}}
+                            </li>
+
+                            <li>Total - {{total}}</li>
+                        </ol>
+                    </transition>
+                </div>
                 <h3 class="user--name">John Doe</h3>
             </div>
         </header>
         <section>
             <h2 class="product--heading">Products</h2>
             <ul class="product--list">
-                <li v-for="product in products" class="product--card">
+                <li v-for="(product, index) in products" class="product--card">
                     <img
                         class="product--image"
                         class="product--image"
@@ -92,7 +110,12 @@
                     <p class="product--description">{{product.description}}</p>
                     <div class="product--buy">
                         <h3 class="product--cost">{{product.cost}}$</h3>
-                        <button class="product--buy--btn">Add to cart</button>
+                        <button
+                            @click="addToCart(index)"
+                            class="product--buy--btn"
+                        >
+                            Add to cart
+                        </button>
                     </div>
                 </li>
             </ul>
